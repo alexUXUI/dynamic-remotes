@@ -4,7 +4,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   mode: 'development',
-  entry: ['./src/index'],
+  entry: './src/index',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -12,15 +12,6 @@ module.exports = {
   devServer: {
     port: 8081,
     static: './dist',
-    open: false,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,7 +19,6 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'package_b',
-      shareScope: 'package_b_shared_scope',
       filename: 'remoteEntry.js',
       exposes: {
         './performance': './src/performance',
