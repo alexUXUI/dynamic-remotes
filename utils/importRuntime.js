@@ -82,7 +82,7 @@ export const importRemote = async ({
         module === '.' || module.startsWith('./') ? module : `./${module}`
       ),
     ]);
-    return moduleFactory;
+    return moduleFactory();
   } else {
     const moduleFactory = await window[remoteScope].get(
       module === '.' || module.startsWith('./') ? module : `./${module}`

@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Title Here</title>
+    <script src="https://unpkg.com/launchdarkly-js-client-sdk@3"></script>
+    <script>
+      function main() {
+        const clientSideID = '64a08f2bbd640712de1f57e0';
+        const flagKey = 'federated-feature';
+
+        const context = {
+          kind: 'user',
+          key: 'example-context-key',
+          name: 'Alex',
+        };
+
+        window.ldclient = LDClient.initialize(clientSideID, context);
+        window.ldclient.close();
+      }
+      main();
+    </script>
   </head>
   <body>
     <h1>Hello World</h1>
     <h2>From Module A</h2>
-    <script src="./bundle.js"></script>
   </body>
 </html>

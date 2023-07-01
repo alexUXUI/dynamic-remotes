@@ -32,6 +32,8 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './performance': './src/performance',
+        './a': './src/features/a',
+        './b': './src/features/b',
       },
     }),
   ],
